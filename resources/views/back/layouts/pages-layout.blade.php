@@ -53,6 +53,7 @@
     <link href="{{ asset('back/dist/css/tabler-flags.min118a.css?1684106145') }}" rel="stylesheet" />
     <link href="{{ asset('back/dist/css/tabler-payments.min118a.css?1684106145') }}" rel="stylesheet" />
     <link href="{{ asset('back/dist/css/tabler-vendors.min118a.css?1684106145') }}" rel="stylesheet" />
+    <linke role="stylesheet" href="{{ asset('back/dist/libs/ijabo/ijabo.min.css') }}"/>
     @stack('stylesheet')
     @livewireStyles
 
@@ -94,9 +95,26 @@
     <script src="{{ asset('back/dist/libs/jsvectormap/dist/js/jsvectormap.min118a.js?1684106145') }}" defer></script>
     <script src="{{ asset('back/dist/libs/jsvectormap/dist/maps/world118a.js?1684106145') }}" defer></script>
     <script src="{{ asset('back/dist/libs/jsvectormap/dist/maps/world-merc118a.js?1684106145') }}" defer></script>
+    <script src="{{ asset('back/dist/libs/ijabo/ijabo.min.js') }}"></script>
+    <script src="{{ asset('back/dist/libs/jquery/jquery-3.6.0.min.js') }}"></script>
     @stack('scripts')
     @livewireScripts
-
+    <script>
+        window.addEventListener('showToastr ',function(event){
+            toastr.remove();
+            if(event.detail.type === 'info'){
+                toastr.info(event.detail.message);
+            }else if(event.detail.type === 'success'){
+                toastr.success(event.detail.message);
+            }else if(event.detail.type === 'error'){
+                toastr.error(event.detail.message);
+            }else if(event.detail.type === 'warning'){
+                toastr.warning(event.detail.message);
+            }else{
+              //  return false;
+            }
+        });
+    </script>
     <!-- Tabler Core -->
     <script src="{{ asset('back/dist/js/tabler.min118a.js?1684106145') }}" defer></script>
     <script src="{{ asset('back/dist/js/demo.min118a.js?1684106145') }}" defer></script>
